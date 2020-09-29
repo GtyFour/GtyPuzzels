@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="google" value="notranslate">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=no, width=device-width,initial-scale=1.0" />
+    <title>MatataTest</title>
+    <script src="../javascript_compressed.js"></script>
+    <script src="../python_compressed.js"></script>
+    <script src="../page_main/main_compressed.js"></script>
+    <script src="../msg/js/en.js"></script>
+    <script src="../appengine/storage.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="code.js"></script>
+</head>
+
+<body>
+    <table width="100%" height="100%">
+        <tr>
+            <td>
+                <h1>
+                    <span id="title" style="display:none;">MatataTest</span>
+                </h1>
+            </td>
+            <!--      <td class="farSide">-->
+            <!--        <select  id="languageMenu"></select>-->
+            <!--      </td>-->
+        </tr>
+        <tr>
+            <td colspan=2>
+                <table width="100%">
+                    <tr id="tabRow" height="8%">
+                        <button id="matataButton" style="display:none;" class="logo primary" title="MatataCode">
+              <img src='../media/1x1.gif' class="icon_logo">
+            </button>
+                        <input id="textInput" type="text" value="This is my code!" style="display:none;" class="matata_code_textinput">
+                        <button id="loadcodeButton" style="display:none;" class="notext" title="LoadCode">
+              <img src='../media/1x1.gif' class="matata_btn icon_open">
+            </button>
+                        <button id="deletecodeButton" style="display:none;" class="notext" title="DeleteCode">
+              <img src='../media/1x1.gif' class="matata_btn icon_delete">
+            </button>
+                        <button id="savecodeButton" style="display:none;" class="notext" title="SaveCode">
+              <img src='../media/1x1.gif' class="matata_btn icon_save">
+            </button>
+                        <button id="connectButton" style="display:none;" class="notext" title="Connect">
+              <img src='../media/1x1.gif' class="matata_btn icon_ble">
+            </button>
+                        <button id="disconnectButton" style="display:none;" class="notext" title="DisConnect">
+              <img src='../media/1x1.gif' class="matata_btn icon_ble_linked">
+            </button>
+                        <button id="updateButton" style="display:none;" class="notext" title="Help">
+              <img src='../media/1x1.gif' class="matata_btn icon_update">
+            </button>
+                        <button id="helpButton" style="display:none;" class="notext" title="Help">
+              <img src='../media/1x1.gif' class="matata_btn icon_help">
+            </button>
+                        <button id="trashButton" style="display:none;" class="notext" title="CleanUp">
+              <img src='../media/1x1.gif' class="matata_btn icon_clean">
+            </button>
+                        <button id="runButton" style="display:none;" class="notext" title="RunCode">
+              <img src='../media/1x1.gif' class="matata_btn icon_play">
+            </button>
+
+                        <button id="stopButton" style="display:none;" class="notext" title="Stop">
+              <img src='../media/1x1.gif' class="matata_btn icon_play">
+            </button>
+                        <!--  stopBtn is bind into runButton, set not display -->
+
+                        <button id="checkcodeButton" style="display:none;" class="notext" title="CheckCode">
+              <img src='../media/1x1.gif' class="icon_open">
+            </button>
+                        <!--  checkcodeButton is bind into input text, set not display -->
+                        <td id="tab_blocks" class="tabon">Blocks</td>
+                        <td id="tab_python" class="taboff">python</td>
+                        <td id="tab_javascript" style="display:none;" class="taboff">javascript</td>
+                        <td id="tab_xml" style="display:none;" class="taboff">XML</td>
+                        <td class="tabmin">
+                            <button id="linkButton" style="display:none;" class="notext" title="...">
+                <img src='../media/1x1.gif' class="icon_ble">
+              </button>
+                            <!--  link btn is an origin blockly btn, it's off in matatacode , just set display:none;  -->
+                        </td>
+                        <td class="tabmax">
+                            <select id="languageMenu"></select>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td height="99%" colspan=2 id="content_area">
+            </td>
+        </tr>
+    </table>
+    <div id="content_blocks" class="content"></div>
+    <pre id="content_python" class="content"></pre>
+    <pre id="content_javascript" class="content"></pre>
+    <textarea id="content_xml" class="content" wrap="off"></textarea>
+
+    <xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none;">
+        <category name="HAT" colour="#000000">
+            <block type="main_block"></block>
+        </category>
+        <category name="%{BKY_TOOLBOX_TITLE_MOTION}" colour="#CCD94A">
+            <block type="motion_forward">
+                <field name="STEP">step_1</field>
+            </block>
+            <block type="motion_backward">
+                <field name="STEP">step_1</field>
+            </block>
+            <block type="motion_turnleft">
+                <field name="ANGLE">90degree</field>
+            </block>
+            <block type="motion_turnright">
+                <field name="ANGLE">90degree</field>
+            </block>
+            <block type="motion_emotion">
+                <field name="EMOTION">hello</field>
+            </block>
+            <block type="motion_length_input">
+                <field name="DIRECTION">forward</field>
+                <value name="input">
+                    <shadow type="math_number">
+                        <field name="NUM">10</field>
+                    </shadow>
+                </value>
+            </block>
+            <block type="motion_spinangle_input">
+                <value name="input">
+                    <shadow type="math_number">
+                        <field name="NUM">90</field>
+                    </shadow>
+                </value>
+            </block>
+            <block type="wheel_speedall">
+                <field name="LDIR">forward</field>
+                <field name="LSPEED">gear_5</field>
+                <field name="RDIR">forward</field>
+                <field name="RSPEED">gear_5</field>
+            </block>
+            <block type="wheel_stop">
+                <field name="WHICH">all</field>
+            </block>
+            <block type="wheel_speedallcm_input">
+                <value name="lspeed">
+                    <shadow type="math_number">
+                        <field name="NUM">10</field>
+                    </shadow>
+                </value>
+                <value name="rspeed">
+                    <shadow type="math_number">
+                        <field name="NUM">10</field>
+                    </shadow>
+                </value>
+            </block>
+            <block type="music_do_dance">
+                <field name="DANCE_LIST">dance1</field>
+            </block>
+            <block type="motion_do_action">
+                <field name="ACTION_LIST">action1</field>
+            </block>
+        </category>
+        <category name="%{BKY_TOOLBOX_TITLE_SOUND}" colour="#EE8A3A">
+            <block type="music_alto">
+                <field name="TONE_LIST">C3</field>
+                <field name="METER">500</field>
+            </block>
+            <block type="music_treble">
+                <field name="TONE_LIST">C4</field>
+                <field name="METER">500</field>
+            </block>
+            <block type="music_playmelody">
+                <field name="MELODY_LIST">melody1</field>
+            </block>
+            <block type="music_playsong">
+                <field name="MUSIC_LIST">music1</field>
+            </block>
+            <block type="volume_set">
+                <value name="VOL">
+                    <shadow type="math_number">
+                        <field name="NUM">10</field>
+                    </shadow>
+                </value>
+            </block>
+        </category>
+        <category name="%{BKY_TOOLBOX_TITLE_SENSOR}" colour="#89D9E4">
+            <block type="sensor_send_data">
+                <field name="NUMBER">1</field>
+            </block>
+            <block type="sensor_wait_data">
+                <field name="NUMBER">1</field>
+            </block>
+            <block type="check_data"></block>
+            <block type="accelerate_check">
+                <field name="CONDITION">shake</field>
+            </block>
+            <block type="rgb_check">
+                <field name="CONDITION">red</field>
+            </block>
+            <block type="btn_check">
+                <field name="CONDITION">play</field>
+            </block>
+            <block type="sound_check"></block>
+            <block type="bump_check"></block>
+            <block type="brightness_check">
+                <field name="CONDITION">brightness</field>
+            </block>
+            <block type="clear_check"></block>
+            <block type="get_data">
+                <field name="NUMBER">1</field>
+            </block>
+            <block type="get_angle">
+                <field name="ANGLE">pitch</field>
+            </block>
+            <block type="get_channel_rgb">
+                <field name="CHANNEL">R</field>
+            </block>
+            <block type="get_axis">
+                <field name="AXIS">x</field>
+            </block>
+            <block type="get_brightness"></block>
+            <block type="get_shaking_value"></block>
+        </category>
+        <category name="%{BKY_TOOLBOX_TITLE_LED}" colour="#8222C3">
+            <block type="bot_led">
+                <field name="LED">all</field>
+                <field name="COLOR">white</field>
+                <field name="LEVEL">1</field>
+            </block>
+            <block type="bot_eyergb_input">
+                <field name="LED">all</field>
+                <value name="COLOR">
+                    <shadow type="colour_picker">
+                        <field name="COLOUR">#ffffff</field>
+                    </shadow>
+                </value>
+            </block>
+            <block type="sensor_ledposition">
+                <field name="POSITION">0</field>
+                <field name="COLOR">white</field>
+                <field name="BRIGHTNESS">6</field>
+            </block>
+            <block type="sensor_ledpositionrgb_input">
+                <value name="POSITION">
+                    <shadow type="math_number">
+                        <field name="NUM">0</field>
+                    </shadow>
+                </value>
+                <value name="COLOR">
+                    <shadow type="colour_picker">
+                        <field name="COLOUR">#ffffff</field>
+                    </shadow>
+                </value>
+            </block>
+            <block type="sensor_ledcyc">
+                <field name="12">#ffffff</field>
+                <field name="1">#ffffff</field>
+                <field name="2">#ffffff</field>
+                <field name="11">#ffffff</field>
+                <field name="3">#ffffff</field>
+                <field name="10">#ffffff</field>
+                <field name="4">#ffffff</field>
+                <field name="9">#ffffff</field>
+                <field name="5">#ffffff</field>
+                <field name="6">#ffffff</field>
+                <field name="7">#ffffff</field>
+                <field name="8">#ffffff</field>
+            </block>
+
+            <block type="sensor_ledanimation">
+                <field name="ANIMATION">rainbow</field>
+            </block>
+            <block type="sensor_ledclear"></block>
+            <block type="matatabot_ledclear"></block>
+            <block type="colour_picker"></block>
+            <block type="colour_random"></block>
+            <block type="colour_rgb">
+                <value name="RED">
+                    <shadow type="math_number">
+                        <field name="NUM">100</field>
+                    </shadow>
+                </value>
+                <value name="GREEN">
+                    <shadow type="math_number">
+                        <field name="NUM">50</field>
+                    </shadow>
+                </value>
+                <value name="BLUE">
+                    <shadow type="math_number">
+                        <field name="NUM">0</field>
+                    </shadow>
+                </value>
+            </block>
+            <block type="colour_blend">
+                <value name="COLOUR1">
+                    <shadow type="colour_picker">
+                        <field name="COLOUR">#ff0000</field>
+                    </shadow>
+                </value>
+                <value name="COLOUR2">
+                    <shadow type="colour_picker">
+                        <field name="COLOUR">#3333ff</field>
+                    </shadow>
+                </value>
+                <value name="RATIO">
+                    <shadow type="math_number">
+                        <field name="NUM">0.5</field>
+                    </shadow>
+                </value>
+            </block>
+        </category>
+        <category name="%{BKY_TOOLBOX_TITLE_CONTROL}" colour="#388E3C">
+            <block type="controls_repeat_ext">
+                <value name="TIMES">
+                    <shadow type="math_number">
+                        <field name="NUM">10</field>
+                    </shadow>
+                </value>
+            </block>
+            <block type="controls_whileUntil"></block>
+            <block type="controls_flow_statements"></block>
+            <block type="sensor_waituntil"></block>
+            <block type="sensor_waituntil">
+                <value name="UNTIL">
+                    <shadow type="btn_check">
+                        <field name="CONDITION">play</field>
+                    </shadow>
+                </value>
+            </block>
+            <block type="timer_wait">
+                <field name="SECOND">1</field>
+            </block>
+            <block type="timer_wait_ms">
+                <field name="MSTIMES">100</field>
+            </block>
+            <block type="timer_wait_ms_input">
+                <value name="MSTIMES">
+                    <shadow type="math_number">
+                        <field name="NUM">100</field>
+                    </shadow>
+                </value>
+            </block>
+        </category>
+        <category name="%{BKY_TOOLBOX_TITLE_LOGIC}" colour="#29B6F6">
+            <block type="controls_if"></block>
+            <block type="logic_operation"></block>
+            <block type="logic_negate"></block>
+            <block type="logic_boolean"></block>
+            <block type="logic_compare">
+                <field name="OP">LT</field>
+            </block>
+        </category>
+        <category name="%{BKY_TOOLBOX_TITLE_MATHS}" colour="#3B7FF8">
+            <block type="math_number">
+                <field name="NUM">1</field>
+            </block>
+            <block type="math_arithmetic">
+                <field name="OP">ADD</field>
+                <value name="A">
+                    <shadow type="math_number">
+                        <field name="NUM">1</field>
+                    </shadow>
+                </value>
+                <value name="B">
+                    <shadow type="math_number">
+                        <field name="NUM">1</field>
+                    </shadow>
+                </value>
+            </block>
+            <block type="math_single">
+                <value name="NUM">
+                    <shadow type="math_number">
+                        <field name="NUM">9</field>
+                    </shadow>
+                </value>
+            </block>
+            <block type="math_trig">
+                <value name="NUM">
+                    <shadow type="math_number">
+                        <field name="NUM">45</field>
+                    </shadow>
+                </value>
+            </block>
+            <block type="math_constant"></block>
+            <block type="math_number_property">
+                <value name="NUMBER_TO_CHECK">
+                    <shadow type="math_number">
+                        <field name="NUM">0</field>
+                    </shadow>
+                </value>
+            </block>
+            <block type="math_round">
+                <value name="NUM">
+                    <shadow type="math_number">
+                        <field name="NUM">3.1</field>
+                    </shadow>
+                </value>
+            </block>
+            <block type="math_modulo">
+                <value name="DIVIDEND">
+                    <shadow type="math_number">
+                        <field name="NUM">64</field>
+                    </shadow>
+                </value>
+                <value name="DIVISOR">
+                    <shadow type="math_number">
+                        <field name="NUM">10</field>
+                    </shadow>
+                </value>
+            </block>
+            <block type="math_random_int">
+                <value name="FROM">
+                    <shadow type="math_number">
+                        <field name="NUM">1</field>
+                    </shadow>
+                </value>
+                <value name="TO">
+                    <shadow type="math_number">
+                        <field name="NUM">100</field>
+                    </shadow>
+                </value>
+            </block>
+            <block type="math_random_float"></block>
+        </category>
+        <category name="%{BKY_TOOLBOX_TITLE_FUNCTION}" colour="#FFD600" custom="PROCEDURE"></category>
+        <category name="%{BKY_TOOLBOX_TITLE_VARIABLE}" colour="#F09DA2" custom="VARIABLE"></category>
+
+    </xml>
+
+</body>
+
+</html>

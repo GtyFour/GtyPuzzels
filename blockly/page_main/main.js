@@ -1,0 +1,52 @@
+goog.provide('Main');
+// Core
+goog.require('Blockly.requires');
+// Blocks
+goog.require('Blockly.Constants.Logic');
+goog.require('Blockly.Constants.Loops');
+goog.require('Blockly.Constants.Math');
+goog.require('Blockly.Constants.Text');
+goog.require('Blockly.Constants.Colour');
+goog.require('Blockly.Constants.Lists');
+goog.require('Blockly.Constants.LED');
+goog.require('Blockly.Constants.Motion');
+goog.require('Blockly.Constants.Music');
+goog.require('Blockly.Constants.Sensor');
+goog.require('Blockly.Constants.Text');
+goog.require('Blockly.Constants.Timer');
+goog.require('Blockly.Constants.VariablesDynamic');
+goog.require('Blockly.Constants.Variables');
+goog.require('Blockly.Constants.Wheel');
+goog.require('Blockly.Blocks.procedures');
+// JavaScript Generators
+goog.require('Blockly.JavaScript.LED');
+goog.require('Blockly.JavaScript.motion');
+goog.require('Blockly.JavaScript.music');
+goog.require('Blockly.JavaScript.sensor');
+goog.require('Blockly.JavaScript.colour');
+goog.require('Blockly.JavaScript.lists');
+goog.require('Blockly.JavaScript.logic');
+goog.require('Blockly.JavaScript.loops');
+goog.require('Blockly.JavaScript.math');
+goog.require('Blockly.JavaScript.procedures');
+goog.require('Blockly.JavaScript.texts');
+goog.require('Blockly.JavaScript.timer');
+goog.require('Blockly.JavaScript.variablesDynamic');
+goog.require('Blockly.JavaScript.variables');
+goog.require('Blockly.JavaScript.wheel');
+// Python Generators
+goog.require('Blockly.Python.LED');
+goog.require('Blockly.Python.motion');
+goog.require('Blockly.Python.music');
+goog.require('Blockly.Python.sensor');
+goog.require('Blockly.Python.colour');
+goog.require('Blockly.Python.lists');
+goog.require('Blockly.Python.logic');
+goog.require('Blockly.Python.loops');
+goog.require('Blockly.Python.math');
+goog.require('Blockly.Python.procedures');
+goog.require('Blockly.Python.texts');
+goog.require('Blockly.Python.timer');
+goog.require('Blockly.Python.variablesDynamic');
+goog.require('Blockly.Python.variables');
+goog.require('Blockly.Python.wheel');
